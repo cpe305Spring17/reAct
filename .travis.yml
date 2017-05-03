@@ -36,6 +36,10 @@ android:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
+addons:
+  sonarqube:
+    organization: "305"
+
 before_install:
   - chmod +x gradlew
   - mkdir "$ANDROID_HOME/licenses" || true
@@ -50,8 +54,5 @@ before_script:
 
 script: ./gradlew clean build
 
-addons:
-  sonarqube:
-    organization: "305"
 script:
  - sonar-scanner
