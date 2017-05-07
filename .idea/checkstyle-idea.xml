@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CheckStyle-IDEA">
+    <option name="configuration">
+      <map>
+        <entry key="checkstyle-version" value="7.7" />
+        <entry key="location-0" value="LOCAL_FILE:/Users/Nishanth/Desktop/google_checks1.xml:Google Style" />
+        <entry key="location-1" value="CLASSPATH:/sun_checks.xml:The default Checkstyle rules" />
+        <entry key="scanscope" value="JavaOnly" />
+        <entry key="suppress-errors" value="true" />
+        <entry key="thirdparty-classpath" value="" />
+      </map>
+    </option>
+  </component>
+</project>
