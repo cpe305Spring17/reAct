@@ -2,6 +2,8 @@ package edu.calpoly.react.model;
 
 import java.security.InvalidParameterException;
 
+import edu.calpoly.react.model.database.DBConnection;
+
 /**
  * Created by Nishanth on 4/27/17.
  */
@@ -37,9 +39,9 @@ public class Activity {
     }
 
     public void setName(String name) {
-        if (name == null || name.isEmpty())
+        if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("Activities must have a name");
-
+        }
         this.name = name;
     }
 
@@ -52,7 +54,6 @@ public class Activity {
     }
 
     public boolean isValid() {
-        return true;
-        //return DBConnection.getInstance().getActivity(name) == null;
+        return DBConnection.getInstance().getActivity(name) == null;
     }
 }

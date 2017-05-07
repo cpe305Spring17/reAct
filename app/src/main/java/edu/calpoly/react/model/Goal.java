@@ -23,7 +23,8 @@ public class Goal extends TimeWindow {
     }
 
     public Goal(String name, List<SubGoal> subGoals, Date startTime, Date endTime)
-            throws TimeWindowException {
+            throws TimeWindowException
+    {
         super(startTime, endTime);
         setName(name);
         setSubGoals(subGoals);
@@ -54,15 +55,15 @@ public class Goal extends TimeWindow {
         this.subGoals = subGoals;
     }
 
-    /* METHODS */
-
     public Boolean validate() {
         if (startTime != null && endTime != null) {
             long totalTime = this.timeSpan();
+
             for (SubGoal sg : this.subGoals) {
                 totalTime -= sg.getTotalTime();
-                if (totalTime < 0)
+                if (totalTime < 0) {
                     return false;
+                }
             }
         }
         return true;

@@ -49,8 +49,6 @@ public class TimeWindow {
         this.endTime = endTime;
     }
 
-    /* METHODS */
-
     public long timeSpan() {
         if (startTime == null || endTime == null)
             throw new IllegalStateException("StartTime and EndTime required for calculating time span");

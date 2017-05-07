@@ -97,7 +97,6 @@ public class Event extends TimeWindow {
                         "Could not obtain event duration. The event has invalid start/stop times.", ex);
             }
         }
-
         return duration;
     }
 }

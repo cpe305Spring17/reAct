@@ -1,5 +1,7 @@
 package edu.calpoly.react.model;
 
+import edu.calpoly.react.model.database.DBConnection;
+
 /**
  * Created by Nishanth on 4/27/17.
  */
@@ -36,8 +38,7 @@ public class Category {
     }
 
     public boolean isValid() {
-        return true;
-        //return DBConnection.getInstance().getCategory(name) == null;
+        return DBConnection.getInstance().getCategory(name) == null;
     }
 
     @Override
@@ -52,17 +53,15 @@ public class Category {
     public boolean equals(Object other) {
         if (!(other instanceof Category))
             return false;
-        Category asCategory = (Category)other;
+        Category asCategory = (Category) other;
         boolean idsEqual = (id == null && asCategory.getId() == null)
                 || (id != null && id.equals(asCategory.getId()));
         boolean nameEqual = (name == null && asCategory.getName() == null)
                 || (name != null && name.equals(asCategory.getName()));
         return idsEqual && nameEqual;
     }
-    /*
-    @Override
+
     public int compareTo(Category other) {
         return name.compareTo(other.getName());
     }
-    */
 }

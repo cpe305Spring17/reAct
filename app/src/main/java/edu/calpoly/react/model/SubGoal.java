@@ -65,8 +65,6 @@ public class SubGoal {
         this.totalEvents = totalEvents;
     }
 
-    /* METHODS */
-
     public Boolean validate() {
         return activity == null || totalTime == null;
     }
