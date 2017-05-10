@@ -2,6 +2,9 @@ package edu.calpoly.react;
 
 import org.junit.Test;
 
+import edu.calpoly.react.model.Activity;
+import edu.calpoly.react.model.Category;
+
 import static junit.framework.Assert.*;
 
 /**
@@ -10,7 +13,14 @@ import static junit.framework.Assert.*;
 
 public class TestCategory {
     @Test
-    public void TestActivityConstructor() {
-        assertTrue(true);
+    public void TestActivityEmptyConstructor() {
+        Category c = new Category();
+        assertNotNull(c);
+    }
+
+    @Test
+    public void TestActivityGeneralConstructor() {
+        Category c = new Category();
+        assertNotNull(c);
     }
 }

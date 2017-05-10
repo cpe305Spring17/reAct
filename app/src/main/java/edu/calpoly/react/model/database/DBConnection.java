@@ -292,7 +292,6 @@ public class DBConnection extends SQLiteOpenHelper {
     /* Add activity to TABLE_ACTIVITY */
     /* Returns id of new activity, -1 on error */
     public long addActivity(Activity activity) {
-        int isInstantInt = 0;
         ContentValues values = new ContentValues();
 
         values.put(ACTIVITY_NAME, activity.getName());
@@ -308,7 +307,6 @@ public class DBConnection extends SQLiteOpenHelper {
     /* Update a given activity in TABLE_ACTIVITY */
     /* Returns number of rows affected by method, expected return should be 1 */
     public int updateActivity(Activity activity) {
-        int isInstantInt = 0;
         ContentValues values = new ContentValues();
 
         values.put(ACTIVITY_NAME, activity.getName());
