@@ -32,8 +32,13 @@ public class TimeWindow {
     }
 
     public void setStartTime(Date startTime) throws TimeWindowException {
-        if (endTime != null && startTime != null && startTime.after(endTime))
+        if (endTime != null && startTime != null && startTime.after(endTime)) {
             throw new TimeWindowException("StartTime is before EndTime");
+        }
+
+        if (startTime == null) {
+            throw new TimeWindowException("StartTime can not be null");
+        }
 
         this.startTime = startTime;
     }
@@ -46,13 +51,14 @@ public class TimeWindow {
         if (startTime != null && endTime != null && endTime.before(startTime))
             throw new TimeWindowException("EndTime must be after StartTime");
 
+        if (endTime == null) {
+            throw new TimeWindowException("EndTime can not be null");
+        }
+
         this.endTime = endTime;
     }
 
     public long timeSpan() {
-        if (startTime == null || endTime == null)
-            throw new IllegalStateException("StartTime and EndTime required for calculating time span");
-
         return endTime.getTime() - startTime.getTime();
     }
 
@@ -73,12 +79,10 @@ public class TimeWindow {
 
     public Boolean encompasses(TimeWindow other) {
         Date otherStart = other.getStartTime();
-        boolean startBefore = startTime != null && otherStart != null
-                && (startTime.before(otherStart) || startTime.equals(otherStart));
+        boolean startBefore = startTime.before(otherStart) || startTime.equals(otherStart);
 
         Date otherEnd = other.getEndTime();
-        boolean endAfter = endTime != null && otherEnd != null
-                && (endTime.after(otherEnd) || endTime.equals(otherEnd));
+        boolean endAfter = endTime.after(otherEnd) || endTime.equals(otherEnd);
 
         return startBefore && endAfter;
     }
