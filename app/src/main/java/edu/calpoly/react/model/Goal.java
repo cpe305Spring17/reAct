@@ -41,9 +41,9 @@ public class Goal extends TimeWindow {
     }
 
     public void setName(String name) {
-        if (name == null || name.isEmpty())
-            throw new InvalidParameterException("goals must have names.");
-
+        if (name == null || name.isEmpty()) {
+            throw new InvalidParameterException("Goals must have names");
+        }
         this.name = name;
     }
 

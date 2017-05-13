@@ -36,21 +36,21 @@ public class SubGoal {
     }
 
     public void setAction(Action action) {
-        if (action == null)
+        if (action == null) {
             throw new NullPointerException("Action cannot be null for SubGoal");
+        }
         this.action = action;
     }
+
 
     public Long getTotalTime() {
         return totalTime;
     }
 
     public void setTotalTime(Long totalTime) {
-        if (action != null && totalTime != null)
-            throw new IllegalStateException("Instant activities must have a total time for SubGoal");
-        else if (totalTime == null && totalTime <= 0)
+        if (totalTime == null || totalTime <= 0) {
             throw new InvalidParameterException("SubGoal total time must be at least 0");
-
+        }
         this.totalTime = totalTime;
     }
 
@@ -59,13 +59,9 @@ public class SubGoal {
     }
 
     public void setTotalEvents(Integer totalEvents) {
-        if (totalEvents == null && totalEvents <= 0)
+        if (totalEvents == null || totalEvents <= 0) {
             throw new InvalidParameterException("SubGoal must have at least 1 event");
-
+        }
         this.totalEvents = totalEvents;
-    }
-
-    public Boolean validate() {
-        return action == null || totalTime == null;
     }
 }
