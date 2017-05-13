@@ -204,4 +204,35 @@ public class TestTimeWindow {
             assertTrue(false);
         }
     }
+
+    @Test
+    public void TestTimeWindowEncompassTrue() {
+        Date start1 = new Date(12);
+        Date end1 = new Date(100);
+        Date start2 = new Date(10);
+        Date end2 = new Date(20);
+        Date start3 = new Date(14);
+        Date end3 = new Date(240);
+        List<TimeWindow> tws = new ArrayList<>();
+        try {
+            TimeWindow t1 = new TimeWindow(start1, end1);
+            TimeWindow t2 = new TimeWindow(start2, end2);
+            TimeWindow t3 = new TimeWindow(start3, end3);
+
+            tws.add(t1);
+            tws.add(t2);
+            tws.add(t3);
+
+            TimeWindow timeRange = new TimeWindow();
+            timeRange.encompass(tws);
+            Date low = new Date(10);
+            Date high = new Date(240);
+
+            assertTrue(timeRange.getStartTime().equals(low) &&
+                    timeRange.getEndTime().equals(high));
+        } catch (TimeWindowException twe) {
+            assertTrue(false);
+        }
+    }
+
 }
