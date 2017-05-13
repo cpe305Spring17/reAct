@@ -53,9 +53,9 @@ public class Event extends TimeWindow {
     }
 
     public void setAction(Action action) {
-        if (action == null)
+        if (action == null) {
             throw new NullPointerException("Action can not be null for an event");
-
+        }
         this.action = action;
     }
 
@@ -71,8 +71,8 @@ public class Event extends TimeWindow {
     }
 
     public void stop(Date endTime) {
-        if (startTime == null || endTime.before(startTime))
-            throw new IllegalStateException("Can not stop an event that has not started");
+        if (endTime.before(startTime))
+            throw new IllegalStateException("Can not stop an event before it's started");
 
         try {
             setEndTime(endTime);
@@ -83,9 +83,6 @@ public class Event extends TimeWindow {
 
     @Override
     public long timeSpan() {
-        if (startTime == null)
-            throw new IllegalStateException("Event has not started");
-
         long duration = 0L;
         if (endTime == null) {
             duration = new Date().getTime() - startTime.getTime();
@@ -94,7 +91,8 @@ public class Event extends TimeWindow {
                 duration = super.timeSpan();
             } catch (IllegalStateException ex) {
                 Log.e(Event.class.getName(),
-                        "Could not obtain event duration. The event has invalid start/stop times.", ex);
+                        "Could not obtain event duration. The event has invalid start/stop times.",
+                        ex);
             }
         }
         return duration;

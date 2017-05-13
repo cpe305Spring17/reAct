@@ -51,10 +51,6 @@ public class TimeWindow {
         if (startTime != null && endTime != null && endTime.before(startTime))
             throw new TimeWindowException("EndTime must be after StartTime");
 
-        if (endTime == null) {
-            throw new TimeWindowException("EndTime can not be null");
-        }
-
         this.endTime = endTime;
     }
 

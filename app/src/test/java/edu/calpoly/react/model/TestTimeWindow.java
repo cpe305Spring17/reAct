@@ -105,18 +105,6 @@ public class TestTimeWindow {
     }
 
     @Test
-    public void TestTimeWindowSetEndTimeException2() {
-        TimeWindow t = new TimeWindow();
-        Date d = new Date();
-        try {
-            t.setEndTime(d);
-        } catch (TimeWindowException twe) {
-            assertTrue(false);
-        }
-        assertEquals(d, t.getEndTime());
-    }
-
-    @Test
     public void TestTimeWindowTimeSpan() {
         Date start = new Date(5);
         Date end = new Date(10);
@@ -229,7 +217,7 @@ public class TestTimeWindow {
             Date high = new Date(240);
 
             assertTrue(timeRange.getStartTime().equals(low) &&
-                    timeRange.getEndTime().equals(high));
+                     timeRange.getEndTime().equals(high));
         } catch (TimeWindowException twe) {
             assertTrue(false);
         }
