@@ -41,13 +41,6 @@ public class Category {
         return DBConnection.getInstance().getCategory(name) == null;
     }
 
-    @Override
-    public int hashCode() {
-        int hashCode = 1;
-        hashCode = 31 * hashCode + (id == null ? 0 : id.hashCode());
-        hashCode = 31 * hashCode + (name == null ? 0 : name.hashCode());
-        return hashCode;
-    }
 
     @Override
     public boolean equals(Object other) {

@@ -496,13 +496,15 @@ public class DBConnection extends SQLiteOpenHelper {
                 startTime = dateFormat.parse(cursor.getString(3));
                 endTime = cursor.isNull(4) ? null : dateFormat.parse(cursor.getString(4));
             } catch (ParseException e) {
-                Log.e(DBConnection.class.getName(), "Problem with parsing dates from database when getting event from id.", e);
+                Log.e(DBConnection.class.getName(),
+                        "Problem with parsing dates from database when getting event from id.", e);
             }
             try {
                 event = new Event(eventName, eventActivity, startTime, endTime);
                 event.setId(eventId);
             } catch (TimeWindowException e) {
-                Log.e(DBConnection.class.getName(), "Bad start/end time for event when getting event from id.", e);
+                Log.e(DBConnection.class.getName(),
+                        "Bad start/end time for event when getting event from id.", e);
             }
             cursor.close();
         }
