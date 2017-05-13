@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import edu.calpoly.react.model.Activity;
+import edu.calpoly.react.model.Action;
 import edu.calpoly.react.model.Category;
 import edu.calpoly.react.model.Event;
 import edu.calpoly.react.model.Goal;
@@ -289,39 +289,39 @@ public class DBConnection extends SQLiteOpenHelper {
 
     /* ACTIVITY TABLE METHODS */
 
-    /* Add activity to TABLE_ACTIVITY */
-    /* Returns id of new activity, -1 on error */
-    public long addActivity(Activity activity) {
+    /* Add action to TABLE_ACTIVITY */
+    /* Returns id of new action, -1 on error */
+    public long addActivity(Action action) {
         ContentValues values = new ContentValues();
 
-        values.put(ACTIVITY_NAME, activity.getName());
-        if(activity.getCategory() != null) {
-            values.put(ACTIVITY_CATEGORY, activity.getCategory().getId());
+        values.put(ACTIVITY_NAME, action.getName());
+        if(action.getCategory() != null) {
+            values.put(ACTIVITY_CATEGORY, action.getCategory().getId());
         }
 
         long activityId = wdb.insert(TABLE_ACTIVITY, null, values);
-        activity.setId(activityId);
+        action.setId(activityId);
         return activityId;
     }
 
-    /* Update a given activity in TABLE_ACTIVITY */
+    /* Update a given action in TABLE_ACTIVITY */
     /* Returns number of rows affected by method, expected return should be 1 */
-    public int updateActivity(Activity activity) {
+    public int updateActivity(Action action) {
         ContentValues values = new ContentValues();
 
-        values.put(ACTIVITY_NAME, activity.getName());
-        values.put(ACTIVITY_CATEGORY, activity.getCategory().getId());
+        values.put(ACTIVITY_NAME, action.getName());
+        values.put(ACTIVITY_CATEGORY, action.getCategory().getId());
 
-        String activityId = Long.toString(activity.getId());
+        String activityId = Long.toString(action.getId());
         String whereClause = ACTIVITY_ID + " = ?";
         String[] args = {activityId};
         return wdb.update(TABLE_ACTIVITY, values, whereClause, args);
     }
 
-    /* Delete a given activity in TABLE_ACTIVITY */
-    public void deleteActivity(Activity activity) {
-        if(activity != null) {
-            String activityId = Long.toString(activity.getId());
+    /* Delete a given action in TABLE_ACTIVITY */
+    public void deleteActivity(Action action) {
+        if(action != null) {
+            String activityId = Long.toString(action.getId());
             String whereClause = ACTIVITY_ID + " = ?";
             String[] args = {activityId};
             wdb.delete(TABLE_ACTIVITY, whereClause, args);
@@ -354,8 +354,8 @@ public class DBConnection extends SQLiteOpenHelper {
     /* Get all activities in TABLE_ACTIVITY */
     /* Pass null for ALL activities for all categories */
     /* Returns ArrayList of events */
-    public List<Activity> getAllActivities(Category category) {
-        List<Activity> activities = new ArrayList<>();
+    public List<Action> getAllActivities(Category category) {
+        List<Action> activities = new ArrayList<>();
 
         Cursor cursor;
         String[] columns = {ACTIVITY_ID, ACTIVITY_NAME, ACTIVITY_CATEGORY};
@@ -372,10 +372,10 @@ public class DBConnection extends SQLiteOpenHelper {
                 Long activityId = cursor.getLong(0);
                 String activityName = cursor.getString(1);
                 Category activityCategory = cursor.isNull(2) ? null : getCategoryFromId(cursor.getLong(2));
-                Activity activity = new Activity(activityName, activityCategory);
-                activity.setId(activityId);
+                Action action = new Action(activityName, activityCategory);
+                action.setId(activityId);
 
-                activities.add(activity);
+                activities.add(action);
                 cursor.moveToNext();
             }
             cursor.close();
@@ -385,8 +385,8 @@ public class DBConnection extends SQLiteOpenHelper {
 
     /* Return Category with given id from TABLE_CATEGORY */
     /* Returns null on error */
-    public Activity getActivityFromId(long activityId) {
-        Activity activity = null;
+    public Action getActivityFromId(long activityId) {
+        Action action = null;
         String[] columns = {ACTIVITY_ID, ACTIVITY_NAME, ACTIVITY_CATEGORY};
         String whereClause = ACTIVITY_ID + " = ?";
         String[] args = {Long.toString(activityId)};
@@ -395,18 +395,18 @@ public class DBConnection extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             String activityName = cursor.getString(1);
             Category category = getCategoryFromId(cursor.getLong(2));
-            activity = new Activity(activityName, category);
-            activity.setId(activityId);
+            action = new Action(activityName, category);
+            action.setId(activityId);
             cursor.close();
         }
-        return activity;
+        return action;
     }
 
-    /* Return Activity given the activity name */
+    /* Return Action given the activity name */
     /* Returns null if activity doesn't exist */
     /* Useful to check if activity already exists in database */
-    public Activity getActivity(String activityName) {
-        Activity activity = null;
+    public Action getActivity(String activityName) {
+        Action action = null;
         String[] columns = {ACTIVITY_ID, ACTIVITY_CATEGORY};
         String whereClause = ACTIVITY_NAME + " = ?";
         String[] args = {activityName};
@@ -415,11 +415,11 @@ public class DBConnection extends SQLiteOpenHelper {
         if(cursor != null && cursor.moveToFirst()) {
             Long activityId = cursor.getLong(0);
             Category activityCategory = cursor.isNull(1) ? null : getCategoryFromId(cursor.getLong(1));
-            activity = new Activity(activityName, activityCategory);
-            activity.setId(activityId);
+            action = new Action(activityName, activityCategory);
+            action.setId(activityId);
             cursor.close();
         }
-        return activity;
+        return action;
     }
 
 
@@ -432,7 +432,7 @@ public class DBConnection extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(EVENT_NAME, event.getName());
-        values.put(EVENT_ACTIVITY, event.getActivity().getId());
+        values.put(EVENT_ACTIVITY, event.getAction().getId());
         values.put(EVENT_START, dateFormat.format(event.getStartTime()));
         if(event.getEndTime() != null) {
             values.put(EVENT_END, dateFormat.format(event.getEndTime()));
@@ -450,7 +450,7 @@ public class DBConnection extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(EVENT_NAME, event.getName());
-        values.put(EVENT_ACTIVITY, event.getActivity().getId());
+        values.put(EVENT_ACTIVITY, event.getAction().getId());
         values.put(EVENT_START, dateFormat.format(event.getStartTime()));
         values.put(EVENT_END, dateFormat.format(event.getEndTime()));
 
@@ -487,7 +487,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             String eventName = cursor.getString(1);
-            Activity eventActivity = getActivityFromId(cursor.getLong(2));
+            Action eventAction = getActivityFromId(cursor.getLong(2));
 
             Date startTime = null;
             Date endTime = null;
@@ -500,7 +500,7 @@ public class DBConnection extends SQLiteOpenHelper {
                         "Problem with parsing dates from database when getting event from id.", e);
             }
             try {
-                event = new Event(eventName, eventActivity, startTime, endTime);
+                event = new Event(eventName, eventAction, startTime, endTime);
                 event.setId(eventId);
             } catch (TimeWindowException e) {
                 Log.e(DBConnection.class.getName(),
@@ -520,7 +520,7 @@ public class DBConnection extends SQLiteOpenHelper {
             while (!cursor.isAfterLast()) {
                 Long eventId = cursor.getLong(0);
                 String eventName = cursor.getString(1);
-                Activity eventActivity = getActivityFromId(cursor.getLong(2));
+                Action eventAction = getActivityFromId(cursor.getLong(2));
 
                 Date startTime = null;
                 Date endTime = null;
@@ -534,7 +534,7 @@ public class DBConnection extends SQLiteOpenHelper {
                 }
 
                 try {
-                    event = new Event(eventName, eventActivity, startTime, endTime);
+                    event = new Event(eventName, eventAction, startTime, endTime);
                     event.setId(eventId);
                     events.add(event);
                 } catch (TimeWindowException twe) {
@@ -547,16 +547,16 @@ public class DBConnection extends SQLiteOpenHelper {
         return events;
     }
 
-    /* Return Events that are active (start time but no end time) given activity */
+    /* Return Events that are active (start time but no end time) given action */
     /* Pass in null for all active events */
     /* Returns null on error */
-    public List<Event> getActiveEventFromActvity(Activity activity) {
+    public List<Event> getActiveEventFromActvity(Action action) {
         Cursor cursor;
 
         String[] columns = {EVENT_ID, EVENT_NAME, EVENT_ACTIVITY, EVENT_START, EVENT_END};
-        if(activity != null) {
+        if(action != null) {
             String whereClause = EVENT_ACTIVITY + " = ? AND " + EVENT_END + " IS NULL";
-            String[] args = {Long.toString(getActivityId(activity.getName()))};
+            String[] args = {Long.toString(getActivityId(action.getName()))};
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
         } else {
             String whereClause = EVENT_END + " IS NULL";
@@ -568,18 +568,18 @@ public class DBConnection extends SQLiteOpenHelper {
         return events;
     }
 
-    /* Return List of events that are inactive (start time and end time) given activity */
+    /* Return List of events that are inactive (start time and end time) given action */
     /* Returns null on error */
-    public List<Event> getInActiveEventsFromActvity(Activity activity) {
+    public List<Event> getInActiveEventsFromActvity(Action action) {
         Cursor cursor;
 
         String[] columns = {EVENT_ID, EVENT_NAME, EVENT_ACTIVITY, EVENT_START, EVENT_END};
-        if (activity == null ) {
+        if (action == null ) {
             String whereClause = EVENT_END + " IS NOT NULL";
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, null, null, null, null, null);
         } else {
             String whereClause = EVENT_ACTIVITY + " = ? AND " + EVENT_END + " IS NOT NULL";
-            String[] args = {Long.toString(getActivityId(activity.getName()))};
+            String[] args = {Long.toString(getActivityId(action.getName()))};
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
         }
         List<Event> events = collectEvents(cursor);
@@ -588,16 +588,16 @@ public class DBConnection extends SQLiteOpenHelper {
         return events;
     }
 
-    /* Get all events in TABLE_EVENT for specific activity */
+    /* Get all events in TABLE_EVENT for specific action */
     /* Pass null for ALL events for all activities */
     /* Returns ArrayList of events */
-    public List<Event> getAllEvents(Activity activity) {
+    public List<Event> getAllEvents(Action action) {
         Cursor cursor;
 
         String[] columns = {EVENT_ID, EVENT_NAME, EVENT_ACTIVITY, EVENT_START, EVENT_END};
-        if(activity != null) {
+        if(action != null) {
             String whereClause = EVENT_ACTIVITY + " = ?";
-            String[] args = {Long.toString(getActivityId(activity.getName()))};
+            String[] args = {Long.toString(getActivityId(action.getName()))};
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
         } else {
             cursor = rdb.query(TABLE_EVENT, columns, null, null, null, null, null, null);
@@ -729,7 +729,7 @@ public class DBConnection extends SQLiteOpenHelper {
     private long addSubGoal(Long goalId, SubGoal subGoal) {
         ContentValues values = new ContentValues();
 
-        values.put(SUBGOAL_ACTIVITY, getActivityId(subGoal.getActivity().getName()));
+        values.put(SUBGOAL_ACTIVITY, getActivityId(subGoal.getAction().getName()));
         values.put(SUBGOAL_TOTALTIME, subGoal.getTotalTime());
         values.put(SUBGOAL_NUMEVENTS, subGoal.getTotalEvents());
         values.put(SUBGOAL_GOAL, goalId);
@@ -761,10 +761,10 @@ public class DBConnection extends SQLiteOpenHelper {
 
         if(cursor != null && cursor.moveToFirst()) {
             while(!cursor.isAfterLast()) {
-                Activity activity = getActivityFromId(cursor.getLong(1));
+                Action action = getActivityFromId(cursor.getLong(1));
                 Long totalTime = cursor.getLong(2);
                 int numEvents = cursor.getInt(3);
-                SubGoal subGoal = new SubGoal(activity, totalTime, numEvents);
+                SubGoal subGoal = new SubGoal(action, totalTime, numEvents);
                 subGoal.setId(cursor.getLong(0));
 
                 subGoals.add(subGoal);

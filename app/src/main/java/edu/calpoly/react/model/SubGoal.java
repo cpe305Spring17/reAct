@@ -9,7 +9,7 @@ import java.security.InvalidParameterException;
 public class SubGoal {
 
     private Long id;
-    private Activity activity;
+    private Action action;
     private Long totalTime;
     private Integer totalEvents;
 
@@ -19,8 +19,8 @@ public class SubGoal {
         // empty constructor for serialization
     }
 
-    public SubGoal(Activity activity, Long totalTime, Integer totalEvents) {
-        setActivity(activity);
+    public SubGoal(Action action, Long totalTime, Integer totalEvents) {
+        setAction(action);
         setTotalTime(totalTime);
         setTotalEvents(totalEvents);
     }
@@ -31,14 +31,14 @@ public class SubGoal {
 
     public void setId(Long id) { this.id = id; }
 
-    public Activity getActivity() {
-        return activity;
+    public Action getAction() {
+        return action;
     }
 
-    public void setActivity(Activity activity) {
-        if (activity == null)
-            throw new NullPointerException("Activity cannot be null for SubGoal");
-        this.activity = activity;
+    public void setAction(Action action) {
+        if (action == null)
+            throw new NullPointerException("Action cannot be null for SubGoal");
+        this.action = action;
     }
 
     public Long getTotalTime() {
@@ -46,7 +46,7 @@ public class SubGoal {
     }
 
     public void setTotalTime(Long totalTime) {
-        if (activity != null && totalTime != null)
+        if (action != null && totalTime != null)
             throw new IllegalStateException("Instant activities must have a total time for SubGoal");
         else if (totalTime == null && totalTime <= 0)
             throw new InvalidParameterException("SubGoal total time must be at least 0");
@@ -66,6 +66,6 @@ public class SubGoal {
     }
 
     public Boolean validate() {
-        return activity == null || totalTime == null;
+        return action == null || totalTime == null;
     }
 }

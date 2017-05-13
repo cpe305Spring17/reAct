@@ -14,7 +14,7 @@ public class Event extends TimeWindow {
 
     private Long id;
     private String name;
-    private Activity activity;
+    private Action action;
 
     /* CONSTRUCTORS */
 
@@ -22,16 +22,16 @@ public class Event extends TimeWindow {
         // empty constructor for serialization
     }
 
-    public Event(String name, Activity activity, Date startTime) {
+    public Event(String name, Action action, Date startTime) {
         setName(name);
-        setActivity(activity);
+        setAction(action);
         start(startTime);
     }
 
-    public Event(String name, Activity activity, Date startTime, Date endTime) throws TimeWindowException {
+    public Event(String name, Action action, Date startTime, Date endTime) throws TimeWindowException {
         super(startTime, endTime);
         setName(name);
-        setActivity(activity);
+        setAction(action);
     }
 
     /* GETTERS/SETTERS */
@@ -48,15 +48,15 @@ public class Event extends TimeWindow {
         this.name = name != null && name.isEmpty() ? null : name;
     }
 
-    public Activity getActivity() {
-        return activity;
+    public Action getAction() {
+        return action;
     }
 
-    public void setActivity(Activity activity) {
-        if (activity == null)
-            throw new NullPointerException("Activity can not be null for an event");
+    public void setAction(Action action) {
+        if (action == null)
+            throw new NullPointerException("Action can not be null for an event");
 
-        this.activity = activity;
+        this.action = action;
     }
 
     /* METHODS */

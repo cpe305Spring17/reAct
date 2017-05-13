@@ -8,22 +8,22 @@ import edu.calpoly.react.model.database.DBConnection;
  * Created by Nishanth on 4/27/17.
  */
 
-public class Activity {
+public class Action {
     private Long id;
     private String name;
     private Category category;
 
     /* CONSTRUCTORS */
 
-    public Activity() {
+    public Action() {
         // empty constructor for serialization
     }
 
-    public Activity(String name) {
+    public Action(String name) {
         this(name, null);
     }
 
-    public Activity(String name, Category category) {
+    public Action(String name, Category category) {
         setName(name);
         this.category = category;
     }
@@ -40,7 +40,7 @@ public class Activity {
 
     public void setName(String name) {
         if (name == null || name.isEmpty()) {
-            throw new InvalidParameterException("Activities must have a name");
+            throw new InvalidParameterException("Actions must have a name");
         }
         this.name = name;
     }

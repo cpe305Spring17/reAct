@@ -2,9 +2,6 @@ package edu.calpoly.react.model;
 
 import org.junit.Test;
 
-import edu.calpoly.react.model.Activity;
-import edu.calpoly.react.model.Category;
-
 import static junit.framework.Assert.*;
 
 /**
