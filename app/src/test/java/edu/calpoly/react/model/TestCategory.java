@@ -49,13 +49,6 @@ public class TestCategory {
     }
 
     @Test
-    public void TestCategoryEqualsTrue() {
-        Category c = new Category("category");
-        Category b = c;
-        assertTrue(c.equals(b));
-    }
-
-    @Test
     public void TestCategoryEqualsFalse() {
         Category c = new Category("category");
         Category b = new Category("other");

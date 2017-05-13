@@ -42,18 +42,6 @@ public class Category {
     }
 
 
-    @Override
-    public boolean equals(Object other) {
-        if (!(other instanceof Category))
-            return false;
-        Category asCategory = (Category) other;
-        boolean idsEqual = (id == null && asCategory.getId() == null)
-                || (id != null && id.equals(asCategory.getId()));
-        boolean nameEqual = (name == null && asCategory.getName() == null)
-                || (name != null && name.equals(asCategory.getName()));
-        return idsEqual && nameEqual;
-    }
-
     public int compareTo(Category other) {
         return name.compareTo(other.getName());
     }
