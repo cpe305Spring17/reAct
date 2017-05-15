@@ -94,9 +94,10 @@ public class DBConnection extends SQLiteOpenHelper {
     }
 
     public static synchronized DBConnection getInstance(Context context) {
-        if (instance == null)
+        if (instance == null) {
             instance = new DBConnection(context);
-        return instance;
+        }
+            return instance;
     }
 
     /* Create Database Tables */
@@ -225,7 +226,7 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {categoryName};
         Cursor cursor = rdb.query(TABLE_CATEGORY, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             categoryId = cursor.getInt(0);
             cursor.close();
         }
@@ -239,8 +240,8 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] columns = {CATEGORY_ID, CATEGORY_NAME};
         Cursor cursor = rdb.query(TABLE_CATEGORY, columns, null, null, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
-            while(!cursor.isAfterLast()) {
+        if (cursor != null && cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
                 Category category = new Category(cursor.getString(1));
                 category.setId(cursor.getLong(0));
                 categories.add(category);
@@ -278,7 +279,7 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {categoryName};
         Cursor cursor = rdb.query(TABLE_CATEGORY, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             category = new Category(categoryName);
             category.setId(cursor.getLong(0));
             cursor.close();
@@ -295,7 +296,7 @@ public class DBConnection extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(ACTIVITY_NAME, action.getName());
-        if(action.getCategory() != null) {
+        if (action.getCategory() != null) {
             values.put(ACTIVITY_CATEGORY, action.getCategory().getId());
         }
 
@@ -320,7 +321,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
     /* Delete a given action in TABLE_ACTIVITY */
     public void deleteActivity(Action action) {
-        if(action != null) {
+        if (action != null) {
             String activityId = Long.toString(action.getId());
             String whereClause = ACTIVITY_ID + " = ?";
             String[] args = {activityId};
@@ -340,7 +341,7 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {activityName};
         Cursor cursor = rdb.query(TABLE_ACTIVITY, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             activityId = cursor.getInt(0);
             cursor.close();
         }
@@ -359,7 +360,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
         Cursor cursor;
         String[] columns = {ACTIVITY_ID, ACTIVITY_NAME, ACTIVITY_CATEGORY};
-        if(category != null) {
+        if (category != null) {
             String whereClause = ACTIVITY_CATEGORY + " = ?";
             String[] args = {Long.toString(getCategoryId(category.getName()))};
             cursor = rdb.query(TABLE_ACTIVITY, columns, whereClause, args, null, null, null, null);
@@ -367,8 +368,8 @@ public class DBConnection extends SQLiteOpenHelper {
             cursor = rdb.query(TABLE_ACTIVITY, columns, null, null, null, null, null, null);
         }
 
-        if(cursor != null && cursor.moveToFirst()) {
-            while(!cursor.isAfterLast()) {
+        if (cursor != null && cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
                 Long activityId = cursor.getLong(0);
                 String activityName = cursor.getString(1);
                 Category activityCategory = cursor.isNull(2) ? null : getCategoryFromId(cursor.getLong(2));
@@ -412,7 +413,7 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {activityName};
         Cursor cursor = rdb.query(TABLE_ACTIVITY, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             Long activityId = cursor.getLong(0);
             Category activityCategory = cursor.isNull(1) ? null : getCategoryFromId(cursor.getLong(1));
             action = new Action(activityName, activityCategory);
@@ -434,7 +435,7 @@ public class DBConnection extends SQLiteOpenHelper {
         values.put(EVENT_NAME, event.getName());
         values.put(EVENT_ACTIVITY, event.getAction().getId());
         values.put(EVENT_START, dateFormat.format(event.getStartTime()));
-        if(event.getEndTime() != null) {
+        if (event.getEndTime() != null) {
             values.put(EVENT_END, dateFormat.format(event.getEndTime()));
         }
 
@@ -463,7 +464,7 @@ public class DBConnection extends SQLiteOpenHelper {
     /* Delete a given event in TABLE_EVENT */
     /* Pass null to delete all events in TABLE_EVENT */
     public void deleteEvent(Event event) {
-        if(event != null) {
+        if (event != null) {
             String eventId = Long.toString(event.getId());
             String whereClause = EVENT_ID + " = ?";
             String[] args = {eventId};
@@ -516,8 +517,8 @@ public class DBConnection extends SQLiteOpenHelper {
 
         List<Event> events = new ArrayList<>();
 
-        if (cursor != null && cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
+        if(cursor != null && cursor.moveToFirst()) {
+            while(!cursor.isAfterLast()) {
                 Long eventId = cursor.getLong(0);
                 String eventName = cursor.getString(1);
                 Action eventAction = getActivityFromId(cursor.getLong(2));
@@ -554,7 +555,7 @@ public class DBConnection extends SQLiteOpenHelper {
         Cursor cursor;
 
         String[] columns = {EVENT_ID, EVENT_NAME, EVENT_ACTIVITY, EVENT_START, EVENT_END};
-        if(action != null) {
+        if (action != null) {
             String whereClause = EVENT_ACTIVITY + " = ? AND " + EVENT_END + " IS NULL";
             String[] args = {Long.toString(getActivityId(action.getName()))};
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
@@ -583,7 +584,7 @@ public class DBConnection extends SQLiteOpenHelper {
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
         }
         List<Event> events = collectEvents(cursor);
-        if (cursor != null)
+        if(cursor != null)
             cursor.close();
         return events;
     }
@@ -595,7 +596,7 @@ public class DBConnection extends SQLiteOpenHelper {
         Cursor cursor;
 
         String[] columns = {EVENT_ID, EVENT_NAME, EVENT_ACTIVITY, EVENT_START, EVENT_END};
-        if(action != null) {
+        if (action != null) {
             String whereClause = EVENT_ACTIVITY + " = ?";
             String[] args = {Long.toString(getActivityId(action.getName()))};
             cursor = rdb.query(TABLE_EVENT, columns, whereClause, args, null, null, null, null);
@@ -604,8 +605,9 @@ public class DBConnection extends SQLiteOpenHelper {
         }
 
         List<Event> events = collectEvents(cursor);
-        if (cursor != null)
+        if (cursor != null) {
             cursor.close();
+        }
         return events;
     }
 
@@ -640,7 +642,7 @@ public class DBConnection extends SQLiteOpenHelper {
     /* Delete a given goal in TABLE_GOAL */
     /* Pass null to delete all goals in TABLE_GOAL */
     public void deleteGoal(Goal goal) {
-        if(goal != null) {
+        if (goal != null) {
             String goalId = Long.toString(goal.getId());
             String whereClause = GOAL_ID + " = ?";
             String[] args = {goalId};
@@ -664,7 +666,7 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {goalName};
         Cursor cursor = rdb.query(TABLE_GOAL, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             Long goalId = cursor.getLong(0);
             List<SubGoal> subGoals = getAllSubGoals(goalId);
 
@@ -692,8 +694,8 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] columns = {GOAL_ID, GOAL_NAME, GOAL_START, GOAL_END};
         Cursor cursor = rdb.query(TABLE_GOAL, columns, null, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
-            while(!cursor.isAfterLast()) {
+        if (cursor != null && cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
                 Long goalId = cursor.getLong(0);
                 List<SubGoal> subGoals =  getAllSubGoals(goalId);
                 String goalName = cursor.getString(1);
@@ -759,8 +761,8 @@ public class DBConnection extends SQLiteOpenHelper {
         String[] args = {Long.toString(goalId)};
         Cursor cursor = rdb.query(TABLE_SUBGOAL, columns, whereClause, args, null, null, null, null);
 
-        if(cursor != null && cursor.moveToFirst()) {
-            while(!cursor.isAfterLast()) {
+        if (cursor != null && cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
                 Action action = getActivityFromId(cursor.getLong(1));
                 Long totalTime = cursor.getLong(2);
                 int numEvents = cursor.getInt(3);
