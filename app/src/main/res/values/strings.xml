@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">React</string>
+    <string name="activity_name_prompt">Activity Name*</string>
+    <string name="activity_text_prompt">Enter activity name</string>
+    <string name="act_title_prompt">Activity Description</string>
+    <string name="activity_descrip_prompt">Enter activity description</string>
+    <string name="category_prompt">Category</string>
+    <string name="select_category">Select Category</string>
+    <string name="instant_activity">Instant Activity</string>
+    <string name="create_activity">Add</string>
+
+    <string name="goal_name_prompt">Goal Name*</string>
+    <string name="goal_text_prompt">Enter goal name</string>
+    <string name="pick_start_date">Select Start Date</string>
+    <string name="activities_prompt">Activities</string>
+
+    <string name="new_act_button">New Activity</string>
+    <string name="your_activities">Your Activities</string>
+
+    <string name="your_goals">Your Goals</string>
+    <string name="create_new"><font fgcolor='#FF303F9F'>Create New...</font></string>
+
+    <string-array name="menu_array">
+        <item>Main Menu</item>
+        <item>Activities</item>
+        <item>Notifications</item>
+        <item>Graphs</item>
+        <item>Goals</item>
+        <item>Categories</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string-array name="category_array">
+        <item>Select Category</item>
+        <item>@string/create_new</item>
+    </string-array>
 </resources>
