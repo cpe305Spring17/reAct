@@ -32,8 +32,9 @@ public class Category {
     }
 
     public void setName(String name) {
-        if (name == null)
+        if (name == null) {
             throw new NullPointerException("Categories must have a name");
+        }
         this.name = name;
     }
 

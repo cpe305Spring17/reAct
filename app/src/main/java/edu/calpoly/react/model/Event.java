@@ -71,9 +71,9 @@ public class Event extends TimeWindow {
     }
 
     public void stop(Date endTime) {
-        if (endTime.before(startTime))
+        if (endTime.before(startTime)) {
             throw new IllegalStateException("Can not stop an event before it's started");
-
+        }
         try {
             setEndTime(endTime);
         } catch (TimeWindowException twe) {
