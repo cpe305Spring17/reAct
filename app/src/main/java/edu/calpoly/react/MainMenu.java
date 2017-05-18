@@ -107,7 +107,7 @@ public class MainMenu extends AppCompatActivity {
                 getResources().getColor(R.color.colorGreen));
         super.onCreate(savedInstanceState);
     }
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -131,7 +131,7 @@ public class MainMenu extends AppCompatActivity {
                 new Intent(MainMenu.this, GoalsHome.class),
                 new Intent(MainMenu.this, Categories.class),
                 new Intent(MainMenu.this, Settings.class)
-
+                */
         );
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -151,5 +151,5 @@ public class MainMenu extends AppCompatActivity {
         });
         return true;
     }
-    */
+
 }
