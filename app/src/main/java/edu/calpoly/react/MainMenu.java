@@ -132,6 +132,7 @@ public class MainMenu extends AppCompatActivity {
                 new Intent(MainMenu.this, Categories.class),
                 new Intent(MainMenu.this, Settings.class)
                 */
+
         );
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
