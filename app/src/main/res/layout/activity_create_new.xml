@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_create_new"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!-- tools:context="edu.calpoly.react.CreateNewActivity" -->
+    android:layout_height="match_parent"
+    tools:context="edu.calpoly.react.CreateNewActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -76,15 +76,6 @@
             android:layout_width="247dp"
             android:layout_marginTop="5dp"
             android:layout_height="40dp"></Spinner>
-
-        <CheckBox android:id="@+id/instant_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="15dp"
-            android:buttonTint="@color/colorPrimaryDark"
-            android:text="@string/instant_activity"/>
 
         <Button
             android:layout_width="100dp"
