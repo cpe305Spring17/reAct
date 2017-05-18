@@ -6,7 +6,7 @@ import edu.calpoly.react.model.database.DBConnection;
  * Created by Nishanth on 4/27/17.
  */
 
-public class Category {
+public class Category implements Comparable<Category> {
 
     private Long id;
     private String name;
@@ -41,7 +41,6 @@ public class Category {
     public boolean isValid() {
         return DBConnection.getInstance().getCategory(name) == null;
     }
-
 
     public int compareTo(Category other) {
         return name.compareTo(other.getName());
