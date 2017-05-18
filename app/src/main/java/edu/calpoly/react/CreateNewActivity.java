@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,9 +58,9 @@ public class CreateNewActivity extends AppCompatActivity {
     private void generateCategories() {
         categories = new ArrayList<>();
         categories.add("Select Category");
-        List<Category> dbcategories  = DBConnection.getInstance().getAllCategories();
-        Collections.sort(dbcategories);
-        for (Category category: dbcategories) {
+        List<Category> dbCategories  = DBConnection.getInstance().getAllCategories();
+        Collections.sort(dbCategories);
+        for (Category category: dbCategories) {
             categories.add(category.getName());
         }
         categories.add(getString(R.string.create_new));
@@ -66,7 +69,7 @@ public class CreateNewActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -85,7 +88,7 @@ public class CreateNewActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    */
+
 
     public void openCategoryDialog(View view){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

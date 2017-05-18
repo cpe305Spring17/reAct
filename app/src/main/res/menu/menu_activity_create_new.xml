@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.calpoly.react.CreateNewActivity">
+
+    <item android:id="@+id/action_cancel_new_activity"
+        android:icon="@drawable/clear_btn"
+        android:title="New Activity"
+        app:showAsAction="always"/>
+
+</menu>
