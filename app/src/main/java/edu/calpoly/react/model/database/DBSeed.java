@@ -32,7 +32,6 @@ public class DBSeed {
     private static final String C_ENTERTAINMENT = "Entertainment";
 
     private static final String A_RUNNING = "Running";
-    private static final String A_SKYDIVING = "Skydiving";
     private static final String A_GYM = "Getting swole";
 
     private static final String A_WATCHING_TV = "Watching Silicon Valley";
@@ -45,11 +44,11 @@ public class DBSeed {
     private static final String A_CRYING = "Crying";
 
     private static final String A_STUDYING_357 = "Studying for 357";
-    private static final String A_SENIOR_PROJECT = "Working on Senior Project";
-    private static final String A_STUDYING_305 = "Studying for 305";
+    private static final String A_STUDYING_305 = "Debugging my 305 project";
 
     private static final String A_CORN_HUSKING = "Corn Husking";
     private static final String A_UNDERWATER_BASKET_WEAVING = "Underwater Basket Weaving";
+    private static final String A_FEEDING_MY_PET = "Feeding my pet ostrich";
 
     private DBSeed() {}
 
@@ -60,10 +59,10 @@ public class DBSeed {
         Random rand = new Random(randSeed == null ? new Date().getTime() : randSeed);
 
         Map<String, List<String>> cToA = new HashMap<>();
-        cToA.put(C_EXERCISE, Arrays.asList(A_RUNNING, A_SKYDIVING, A_GYM));
+        cToA.put(C_EXERCISE, Arrays.asList(A_RUNNING, A_GYM));
         cToA.put(C_LIFESTYLE, Arrays.asList(A_WATCHING_TV, A_WATCHING_MOVIES, A_PLAYING_GUITAR));
         cToA.put(C_VIDEO_GAMES, Arrays.asList(A_COOKING, A_CLEANING, A_DOING_LAUNDRY, A_CRYING));
-        cToA.put(C_SCHOOL, Arrays.asList(A_STUDYING_357, A_STUDYING_305, A_SENIOR_PROJECT));
+        cToA.put(C_SCHOOL, Arrays.asList(A_STUDYING_357, A_STUDYING_305, A_FEEDING_MY_PET));
         cToA.put(C_ENTERTAINMENT, Arrays.asList(A_CORN_HUSKING, A_UNDERWATER_BASKET_WEAVING));
 
         for (Map.Entry<String, List<String>> entry : cToA.entrySet()) {
