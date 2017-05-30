@@ -128,8 +128,8 @@ public class MainMenu extends AppCompatActivity {
                 /*
                 new Intent(MainMenu.this, Notifications.class),
                 new Intent(MainMenu.this, Graphs.class),
-                new Intent(MainMenu.this, GoalsHome.class),
                 */
+                new Intent(MainMenu.this, GoalsHome.class),
                 new Intent(MainMenu.this, Categories.class),
                 new Intent(MainMenu.this, Settings.class)
         );
@@ -143,11 +143,14 @@ public class MainMenu extends AppCompatActivity {
                 }
                 //Intent intent = intents.get(position);
                 Intent intent;
-                if(position == 5) {
+                if(position == 4) {
                     intent = intents.get(2);
                 }
-                else if(position == 6) {
+                else if(position == 5) {
                     intent = intents.get(3);
+                }
+                else if(position == 6) {
+                    intent = intents.get(4);
                 } else {
                     intent = intents.get(position);
                 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/goal_name_prompt"
+        android:paddingTop="10pt"
+        android:textStyle="bold"
+        android:layout_weight="0.03" />
+
+    <EditText android:id="@+id/activity_name"
+        android:layout_width="352dp"
+        android:layout_height="30dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:gravity="top"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/inputColor"
+        android:hint="@string/goal_text_prompt"
+        android:layout_weight="0.08" />
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingLeft="10dp"
+        android:text="@string/activities_prompt"
+        android:paddingTop="10pt"
+        android:textStyle="bold"
+        android:layout_weight="0.03"/>
+
+    <Spinner android:id="@+id/activity_spinner"
+        android:layout_width="247dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:text="@string/create_activity"
+        android:onClick="setNewGoal"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="250dp"/>
+
+
+</LinearLayout>

@@ -45,6 +45,14 @@
             android:label="New Activity"
             android:theme="@style/NewActivity" />
         <activity
+            android:name=".GoalsHome"
+            android:label="Goals"
+            android:theme="@style/NewActivity"/>
+        <activity
+            android:name=".SetGoal"
+            android:label="Set Goal"
+            android:theme="@style/NewActivity" />
+        <activity
             android:name=".ActivitiesHome"
             android:label="Actvities"
             android:theme="@style/NewActivity" />
