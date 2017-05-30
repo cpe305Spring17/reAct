@@ -48,6 +48,10 @@
             android:name=".ActivitiesHome"
             android:label="Actvities"
             android:theme="@style/NewActivity" />
+        <activity
+            android:name=".Settings"
+            android:label="Settings"
+            android:theme="@style/NewActivity" />
     </application>
 
 </manifest>

@@ -124,14 +124,14 @@ public class MainMenu extends AppCompatActivity {
 
         final List<Intent> intents = Arrays.asList(
                 null,
-                new Intent(MainMenu.this, ActivitiesHome.class)
+                new Intent(MainMenu.this, ActivitiesHome.class),
                 /*
                 new Intent(MainMenu.this, Notifications.class),
                 new Intent(MainMenu.this, Graphs.class),
                 new Intent(MainMenu.this, GoalsHome.class),
                 new Intent(MainMenu.this, Categories.class),
-                new Intent(MainMenu.this, Settings.class)
                 */
+                new Intent(MainMenu.this, Settings.class)
 
         );
 
@@ -139,11 +139,19 @@ public class MainMenu extends AppCompatActivity {
 
             @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView selectedText = (TextView) parent.getChildAt(0);
-                if (selectedText != null)
+                if (selectedText != null) {
                     selectedText.setTextColor(Color.parseColor("#3F51B5"));
-                Intent intent = intents.get(position);
-                if (intent != null)
+                }
+                //Intent intent = intents.get(position);
+                Intent intent;
+                if(position >= 3) {
+                    intent = intents.get(2);
+                } else {
+                    intent = intents.get(position);
+                }
+                if (intent != null) {
                     MainMenu.this.startActivity(intent);
+                }
             }
 
             @Override public void onNothingSelected(AdapterView<?> parent) {
