@@ -52,6 +52,10 @@
             android:name=".Settings"
             android:label="Settings"
             android:theme="@style/NewActivity" />
+        <activity
+            android:name=".Categories"
+            android:label="Categories"
+            android:theme="@style/NewActivity" />
     </application>
 
 </manifest>

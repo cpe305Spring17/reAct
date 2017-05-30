@@ -129,10 +129,9 @@ public class MainMenu extends AppCompatActivity {
                 new Intent(MainMenu.this, Notifications.class),
                 new Intent(MainMenu.this, Graphs.class),
                 new Intent(MainMenu.this, GoalsHome.class),
-                new Intent(MainMenu.this, Categories.class),
                 */
+                new Intent(MainMenu.this, Categories.class),
                 new Intent(MainMenu.this, Settings.class)
-
         );
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -144,8 +143,11 @@ public class MainMenu extends AppCompatActivity {
                 }
                 //Intent intent = intents.get(position);
                 Intent intent;
-                if(position >= 3) {
+                if(position == 5) {
                     intent = intents.get(2);
+                }
+                else if(position == 6) {
+                    intent = intents.get(3);
                 } else {
                     intent = intents.get(position);
                 }
