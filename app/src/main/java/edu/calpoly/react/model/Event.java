@@ -22,6 +22,11 @@ public class Event extends TimeWindow {
         // empty constructor for serialization
     }
 
+    public Event(String name, Action action) {
+        setName(name);
+        setAction(action);
+    }
+
     public Event(String name, Action action, Date startTime) {
         setName(name);
         setAction(action);

@@ -136,8 +136,8 @@ public class CreateNewActivity extends AppCompatActivity {
         //Add functionality for the category implementation
         Action newAct = new Action(activityName.getText().toString(), category);
         DBConnection.getInstance().addActivity(newAct);
-        // need to figure out how to put into the DB
 
+        //Observer Pattern: calling new intent will notify the view class
         Intent intent = new Intent(this, ActivitiesHome.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

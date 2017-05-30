@@ -20,6 +20,12 @@ public class TestEvent {
     }
 
     @Test
+    public void TestEventBasicConstructor() {
+        Action a = new Action("action");
+        Event e = new Event("event", a);
+    }
+
+    @Test
     public void TestEventStartTimeConstructor() {
         Date start = new Date();
         Action a = new Action("action");

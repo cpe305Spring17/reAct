@@ -76,7 +76,7 @@ public class MainMenu extends AppCompatActivity {
                     if (colorID == backgroundColor) {
                         v.findViewById(btnId).setBackgroundColor(activeColor);
                         String activityName = ((Button)v.findViewById(btnId)).getText().toString();
-                        Event event = new Event(null, DBConnection.getInstance().getActivity(activityName), null);
+                        Event event = new Event(null, DBConnection.getInstance().getActivity(activityName));
                         event.start(new Date());
                         DBConnection.getInstance().addEvent(event);
                     } else {
