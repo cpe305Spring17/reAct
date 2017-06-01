@@ -127,9 +127,7 @@ public class MainMenu extends AppCompatActivity {
                 null,
                 new Intent(MainMenu.this, ActivitiesHome.class),
                 new Intent(MainMenu.this, Notifications.class),
-                /*
                 new Intent(MainMenu.this, Graphs.class),
-                */
                 new Intent(MainMenu.this, GoalsHome.class),
                 new Intent(MainMenu.this, Categories.class),
                 new Intent(MainMenu.this, Settings.class)
@@ -142,19 +140,8 @@ public class MainMenu extends AppCompatActivity {
                 if (selectedText != null) {
                     selectedText.setTextColor(Color.parseColor("#3F51B5"));
                 }
-                //Intent intent = intents.get(position);
-                Intent intent;
-                if(position == 4) {
-                    intent = intents.get(3);
-                }
-                else if(position == 5) {
-                    intent = intents.get(4);
-                }
-                else if(position == 6) {
-                    intent = intents.get(5);
-                } else {
-                    intent = intents.get(position);
-                }
+                Intent intent = intents.get(position);
+
                 if (intent != null) {
                     MainMenu.this.startActivity(intent);
                 }

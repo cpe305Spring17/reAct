@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.calpoly.react.Graphs">
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingLeft="10dp"
+        android:text="@string/activities_prompt"
+        android:paddingTop="10pt"
+        android:textStyle="bold"
+        android:layout_weight="0.03"/>
+
+    <Spinner android:id="@+id/graph_activity_spinner"
+        android:layout_width="247dp"
+        android:layout_marginTop="50dp"
+        android:layout_height="40dp"/>
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/chart1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/graph_activity_spinner" />
+
+</RelativeLayout>
