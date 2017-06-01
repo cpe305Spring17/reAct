@@ -57,6 +57,10 @@
             android:label="Actvities"
             android:theme="@style/NewActivity" />
         <activity
+            android:name=".Notifications"
+            android:label="Notifications"
+            android:theme="@style/NewActivity" />
+        <activity
             android:name=".Settings"
             android:label="Settings"
             android:theme="@style/NewActivity" />

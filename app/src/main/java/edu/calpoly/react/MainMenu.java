@@ -73,9 +73,10 @@ public class MainMenu extends AppCompatActivity {
                 public void onClick(View v) {
                     ColorDrawable colorD = (ColorDrawable) v.findViewById(btnId).getBackground();
                     int colorID = colorD.getColor();
+                    // State Pattern to switch color based on current color
                     if (colorID == backgroundColor) {
                         v.findViewById(btnId).setBackgroundColor(activeColor);
-                        String activityName = ((Button)v.findViewById(btnId)).getText().toString();
+                        String activityName = ((Button) v.findViewById(btnId)).getText().toString();
                         Event event = new Event(null, DBConnection.getInstance().getActivity(activityName));
                         event.start(new Date());
                         DBConnection.getInstance().addEvent(event);
@@ -125,8 +126,8 @@ public class MainMenu extends AppCompatActivity {
         final List<Intent> intents = Arrays.asList(
                 null,
                 new Intent(MainMenu.this, ActivitiesHome.class),
-                /*
                 new Intent(MainMenu.this, Notifications.class),
+                /*
                 new Intent(MainMenu.this, Graphs.class),
                 */
                 new Intent(MainMenu.this, GoalsHome.class),
@@ -144,13 +145,13 @@ public class MainMenu extends AppCompatActivity {
                 //Intent intent = intents.get(position);
                 Intent intent;
                 if(position == 4) {
-                    intent = intents.get(2);
-                }
-                else if(position == 5) {
                     intent = intents.get(3);
                 }
-                else if(position == 6) {
+                else if(position == 5) {
                     intent = intents.get(4);
+                }
+                else if(position == 6) {
+                    intent = intents.get(5);
                 } else {
                     intent = intents.get(position);
                 }
