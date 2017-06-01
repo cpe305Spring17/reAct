@@ -63,9 +63,7 @@ public class GraphDisplay {
 
         barDataSet = new BarDataSet(this.barEntryList, "Time in Hours");
         barData = new BarData(barDataSet);
-        //barData = new BarData(this.barLabelList, barDataSet);
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-
         return barData;
     }
 
@@ -114,7 +112,7 @@ public class GraphDisplay {
     public void push() {
         float hours = ((float)this.currMinutes) / MINUTES_IN_HOUR;
         BarEntry barEntry = new BarEntry(hours, this.currDex);
-
+        System.out.println("in push");
 
         barEntryList.add(barEntry);
         barLabelList.add(this.currDex, dateFormat.format(this.currDate.getTime()));

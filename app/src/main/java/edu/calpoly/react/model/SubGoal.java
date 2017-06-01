@@ -64,4 +64,9 @@ public class SubGoal {
         }
         this.totalEvents = totalEvents;
     }
+
+    //Need to have this actually implemented
+    public Boolean isComplete() {
+        return false;
+    }
 }
