@@ -31,8 +31,12 @@ Design patterns in Java are incredibly powerful and useful if used properly. In 
 Database is a singleton class. There is only one object of the database to access. This design consideration was taken to uphold the ACID (atomicity, consistency, isolation, durability) constraints. No 2 asynchronous calls should be made to the database at the same time to ensure that the database is at a stable state before any transaction.
 
 ##### Observer
+The observer pattern is a pattern created by the Android framework in the form of Intents. I utilized this pattern by alerting the view to reload data from the database when a new activity or event has been added. Essentially, through Android's framework, the view observes the model and the model alerts the view when changes are made.
 
 ##### State
+I plan to utilize the state pattern in order to transition the way buttons are handled. Actions that are active will be a green color; inactive actions are purple. Instead of my current if-else operation that decides what color the button should turn to on click, I plan to use a state pattern. The state pattern will have 2 states, active, and inactive.
+
+
 
 
 
