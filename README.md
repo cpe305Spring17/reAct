@@ -22,7 +22,7 @@ React is still under production and has not yet reached the Play Store. If you'd
 
 ### Class Diagram
 
-![myimage-alt-tag](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Class%20Diagram.png)
+![Class Diagram](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Class%20Diagram.png)
 
 ### Design Considerations
 Design patterns in Java are incredibly powerful and useful if used properly. In a project as small as React, the need of design patterns is not extraordinary. Furthermore, React is backed by Android Studio. Just as the JDK already implements several patterns under the hood, the Android environment implements a variety as well. As a user of the Android environment, I needed to understand how the design patterns worked in Android and use them appropriately. 
@@ -37,8 +37,12 @@ The observer pattern is a pattern created by the Android framework in the form o
 I plan to utilize the state pattern in order to transition the way buttons are handled. Actions that are active will be a green color; inactive actions are purple. Instead of my current if-else operation that decides what color the button should turn to on click, I plan to use a state pattern. The state pattern will have 2 states, active, and inactive.
 
 
-
-
+![Main Menu](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Main%20Menu.png)
+![Graphs](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Graphs.png)
+![GraphActivity](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/GraphActivity.png)
+![Goals](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Goals.png)
+![Settings](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Settings.png)
+![Notification](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Notification.png)
 
 
 
