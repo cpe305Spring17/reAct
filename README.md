@@ -22,7 +22,7 @@ React is still under production and has not yet reached the Play Store. If you'd
 
 ### Class Diagram
 
-INSERT CLASS DIAGRAM HERE
+![myimage-alt-tag](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Class%20Diagram.png)
 
 ### Design Considerations
 Design patterns in Java are incredibly powerful and useful if used properly. In a project as small as React, the need of design patterns is not extraordinary. Furthermore, React is backed by Android Studio. Just as the JDK already implements several patterns under the hood, the Android environment implements a variety as well. As a user of the Android environment, I needed to understand how the design patterns worked in Android and use them appropriately. 
