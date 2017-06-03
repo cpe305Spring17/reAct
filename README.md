@@ -36,12 +36,24 @@ The observer pattern is a pattern created by the Android framework in the form o
 ##### State
 I plan to utilize the state pattern in order to transition the way buttons are handled. Actions that are active will be a green color; inactive actions are purple. Instead of my current if-else operation that decides what color the button should turn to on click, I plan to use a state pattern. The state pattern will have 2 states, active, and inactive.
 
+### Screenshots
 
+##### Main Menu
 ![Main Menu](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Main%20Menu.png?raw=true)
+
+##### Graphs
 ![Graphs](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Graphs.png?raw=true)
+
+##### Graph of Activity
 ![GraphActivity](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/GraphActivity.png?raw=true)
+
+##### Goals
 ![Goals](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Goals.png?raw=true)
+
+##### Settings
 ![Settings](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Settings.png?raw=true)
+
+##### Sample Notification
 ![Notification](https://github.com/cpe305Spring17/spring2017-project-ndara/blob/master/images/Notification.png?raw=true)
 
 
