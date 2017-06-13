@@ -1,8 +1,5 @@
 package edu.calpoly.react;
 
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.data.BarData;
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,12 +8,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.data.BarData;
 
 import edu.calpoly.react.exceptions.TimeWindowException;
 import edu.calpoly.react.model.Action;
 import edu.calpoly.react.model.database.DBConnection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nishanth on 6/1/17.
@@ -31,7 +31,8 @@ public class Graphs extends AppCompatActivity {
     GraphDisplay graphDisplay;
 
 
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+    private class MyOnItemSelectedListener
+            implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
         BarData data;
         GraphDisplay graphDisplay;
         String activityName;
@@ -52,8 +53,7 @@ public class Graphs extends AppCompatActivity {
 
             try {
                 this.data = graphDisplay.makeChartInternals(activityName);
-            }
-            catch (TimeWindowException e) {
+            } catch (TimeWindowException e) {
                 Log.e("Exception", "TimeWindowException", e);
                 return;
             }

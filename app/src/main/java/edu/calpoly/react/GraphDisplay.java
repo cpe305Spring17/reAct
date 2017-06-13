@@ -1,10 +1,13 @@
 package edu.calpoly.react;
 
-
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import edu.calpoly.react.exceptions.TimeWindowException;
+import edu.calpoly.react.model.Event;
+import edu.calpoly.react.model.database.DBConnection;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -14,10 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-
-import edu.calpoly.react.exceptions.TimeWindowException;
-import edu.calpoly.react.model.Event;
-import edu.calpoly.react.model.database.DBConnection;
 
 import static java.util.Calendar.DAY_OF_YEAR;
 import static java.util.Calendar.HOUR_OF_DAY;
@@ -75,8 +74,7 @@ public class GraphDisplay {
 
         if (isSameDay(startCal, endCal)) {
             addToPrebar(startCal, (int) TimeUnit.MILLISECONDS.toMinutes(event.timeSpan()));
-        }
-        else {
+        } else {
             addToPrebar(startCal, timeTillEnd(startCal));
             event.setStartTime(nextDay(startCal));
             eventToPreBar(event);
@@ -98,11 +96,9 @@ public class GraphDisplay {
             this.currDate = (java.util.Calendar) cal.clone();
             this.currMinutes = minutes;
             this.currDex = 0;
-        }
-        else if (isSameDay(cal, this.currDate)) {
+        } else if (isSameDay(cal, this.currDate)) {
             this.currMinutes += minutes;
-        }
-        else {
+        } else {
             push();
             this.currDate = (java.util.Calendar) cal.clone();
             this.currMinutes = minutes;

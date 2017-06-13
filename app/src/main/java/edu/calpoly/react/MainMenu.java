@@ -18,14 +18,14 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
 import edu.calpoly.react.model.Action;
 import edu.calpoly.react.model.Event;
 import edu.calpoly.react.model.database.DBConnection;
 import edu.calpoly.react.model.database.DBSeed;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Nishanth on 5/17/17.
@@ -33,9 +33,13 @@ import edu.calpoly.react.model.database.DBSeed;
 
 public class MainMenu extends AppCompatActivity {
 
-    public static void addButtonLayout(Button button, int centerInParent, int marginLeft, int marginTop, int marginRight, int marginBottom) {
+    public static void addButtonLayout(Button button, int centerInParent, int marginLeft,
+                                       int marginTop, int marginRight, int marginBottom) {
         // Defining the layout parameters of the Button
-        RelativeLayout.LayoutParams buttonLayoutParameters = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams buttonLayoutParameters =
+                new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         // Add Margin to the LayoutParameters
         buttonLayoutParameters.setMargins(marginLeft, marginTop, marginRight, marginBottom);
@@ -47,7 +51,9 @@ public class MainMenu extends AppCompatActivity {
         button.setLayoutParams(buttonLayoutParameters);
     }
 
-    public static void layoutAllActivities(RelativeLayout relative, Context context, final int backgroundColor, final int textColor, final int activeColor) {
+    public static void layoutAllActivities(RelativeLayout relative, Context context,
+                                           final int backgroundColor, final int textColor,
+                                           final int activeColor) {
         int i = 0;
         int j = 0;
         for (Action a : DBConnection.getInstance().getAllActivities(null)) {
@@ -60,21 +66,19 @@ public class MainMenu extends AppCompatActivity {
 
             if (i % 3 == 0) {
                 addButtonLayout(btn, RelativeLayout.ALIGN_PARENT_LEFT, 0, 200 + 600 * j, 0, 0);
-            }
-            else if (i % 3 == 1) {
+            } else if (i % 3 == 1) {
                 addButtonLayout(btn, RelativeLayout.ALIGN_PARENT_LEFT, 0, 400 + 600 * j, 0, 0);
-            }
-            else {
+            } else {
                 addButtonLayout(btn, RelativeLayout.ALIGN_PARENT_LEFT, 0, 600 + 600 * j, 0, 0);
                 j++;
             }
 
-            btn.setOnClickListener(new View.OnClickListener(){
+            btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     ColorDrawable colorD = (ColorDrawable) v.findViewById(btnId).getBackground();
-                    int colorID = colorD.getColor();
+                    int colorid = colorD.getColor();
                     // State Pattern to switch color based on current color
-                    if (colorID == backgroundColor) {
+                    if (colorid == backgroundColor) {
                         v.findViewById(btnId).setBackgroundColor(activeColor);
                         String activityName = ((Button) v.findViewById(btnId)).getText().toString();
                         Event event = new Event(null, DBConnection.getInstance().getActivity(activityName));
@@ -84,7 +88,8 @@ public class MainMenu extends AppCompatActivity {
                         v.findViewById(btnId).setBackgroundColor(backgroundColor);
                         String activityName = ((Button)v.findViewById(btnId)).getText().toString();
                         Action a1 = DBConnection.getInstance().getActivity(activityName);
-                        Event event = DBConnection.getInstance().getActiveEventFromActvity(a1).get(0);
+                        Event event =
+                                DBConnection.getInstance().getActiveEventFromActvity(a1).get(0);
                         event.stop(new Date());
                         DBConnection.getInstance().updateEvent(event);
                     }
@@ -135,7 +140,8 @@ public class MainMenu extends AppCompatActivity {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            @Override public void onItemSelected(AdapterView<?> parent, View view,
+                                                 int position, long id) {
                 TextView selectedText = (TextView) parent.getChildAt(0);
                 if (selectedText != null) {
                     selectedText.setTextColor(Color.parseColor("#3F51B5"));

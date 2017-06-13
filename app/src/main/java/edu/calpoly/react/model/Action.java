@@ -1,8 +1,8 @@
 package edu.calpoly.react.model;
 
-import java.security.InvalidParameterException;
-
 import edu.calpoly.react.model.database.DBConnection;
+
+import java.security.InvalidParameterException;
 
 /**
  * Created by Nishanth on 4/27/17.

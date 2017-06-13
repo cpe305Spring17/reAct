@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import java.util.List;
-
 import edu.calpoly.react.model.Goal;
 import edu.calpoly.react.model.database.DBConnection;
+
+import java.util.List;
+
 
 /**
  * Created by Nishanth on 5/29/17.
@@ -34,7 +35,7 @@ public class GoalsHome extends AppCompatActivity {
             button.setText(goal.getName());
             button.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
             button.setTextColor(getResources().getColor(R.color.white));
-            AddButtonLayout(button, RelativeLayout.ALIGN_PARENT_LEFT, 0, top, 0, 0);
+            addButtonLayout(button, RelativeLayout.ALIGN_PARENT_LEFT, 0, top, 0, 0);
 
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -47,9 +48,13 @@ public class GoalsHome extends AppCompatActivity {
         }
     }
 
-    protected void AddButtonLayout(Button button, int centerInParent, int marginLeft, int marginTop, int marginRight, int marginBottom) {
+    protected void addButtonLayout(Button button, int centerInParent, int marginLeft,
+                                   int marginTop, int marginRight, int marginBottom) {
         // Defining the layout parameters of the Button
-        RelativeLayout.LayoutParams buttonLayoutParameters = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams buttonLayoutParameters =
+                new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         // Add Margin to the LayoutParameters
         buttonLayoutParameters.setMargins(marginLeft, marginTop, marginRight, marginBottom);

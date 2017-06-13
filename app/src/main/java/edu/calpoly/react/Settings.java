@@ -20,13 +20,8 @@ public class Settings extends AppCompatActivity {
         nightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //Toggled is enabled
-                    //keep night mode on
                     Log.i(Settings.class.getName(), "night mode is on");
-                }
-                else {
-                    //Toggled is not enabled
-                    //keep night mode off
+                } else {
                     Log.i(Settings.class.getName(), "night mode off");
                 }
             }
@@ -36,13 +31,8 @@ public class Settings extends AppCompatActivity {
         soundEffects.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //Toggled is enabled
-                    //keep sound effects on
                     Log.i(Settings.class.getName(), "sound effects on");
-                }
-                else {
-                    //Toggled is not enabled
-                    //keep sound effects off
+                } else {
                     Log.i(Settings.class.getName(), "sound effects off");
                 }
             }
@@ -52,13 +42,8 @@ public class Settings extends AppCompatActivity {
         allNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //Toggled is enabled
-                    //All Notifications are on
                     Log.i(Settings.class.getName(), "Notifications are on");
-                }
-                else {
-                    //Toggled is not enabled
-                    //All Notifications are off
+                } else {
                     Log.i(Settings.class.getName(), "Notifications are off");
                 }
             }
@@ -68,13 +53,8 @@ public class Settings extends AppCompatActivity {
         cloudSync.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //Toggled is enabled
-                    //cloudSync is on
                     Log.i(Settings.class.getName(), "cloudSync is on");
-                }
-                else {
-                    //Toggled is not enabled
-                    //cloud sync is off
+                } else {
                     Log.i(Settings.class.getName(), "cloudSync is off");
                 }
             }

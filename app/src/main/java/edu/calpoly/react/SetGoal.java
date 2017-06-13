@@ -12,16 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
 import edu.calpoly.react.exceptions.TimeWindowException;
 import edu.calpoly.react.model.Action;
 import edu.calpoly.react.model.Goal;
 import edu.calpoly.react.model.SubGoal;
 import edu.calpoly.react.model.database.DBConnection;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Nishanth on 5/29/17.
@@ -77,7 +77,8 @@ public class SetGoal extends AppCompatActivity {
         Date start = new Date();
         Date end = new Date(start.getTime() + 100);
 
-        String activityName = ((Spinner)findViewById(R.id.activity_spinner)).getSelectedItem().toString();
+        String activityName =
+                ((Spinner)findViewById(R.id.activity_spinner)).getSelectedItem().toString();
         Action action = DBConnection.getInstance().getActivity(activityName);
         assert action != null;
         Integer totalEvents = 1;
@@ -90,7 +91,8 @@ public class SetGoal extends AppCompatActivity {
             Log.i(SetGoal.class.getName(), "Saving goal: " + goalName);
             DBConnection.getInstance().addGoal(goal);
         } catch (TimeWindowException twe) {
-            Log.e(SetGoal.class.getName(), "Invalid time window while setting goal: " + goalName, twe);
+            Log.e(SetGoal.class.getName(), "Invalid time window while setting goal: " + goalName,
+                    twe);
         }
 
         finish();

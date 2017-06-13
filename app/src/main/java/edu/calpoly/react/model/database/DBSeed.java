@@ -2,6 +2,13 @@ package edu.calpoly.react.model.database;
 
 import android.util.Log;
 
+import edu.calpoly.react.exceptions.TimeWindowException;
+import edu.calpoly.react.model.Action;
+import edu.calpoly.react.model.Category;
+import edu.calpoly.react.model.Event;
+import edu.calpoly.react.model.Goal;
+import edu.calpoly.react.model.SubGoal;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -11,13 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import edu.calpoly.react.exceptions.TimeWindowException;
-import edu.calpoly.react.model.Action;
-import edu.calpoly.react.model.Category;
-import edu.calpoly.react.model.Event;
-import edu.calpoly.react.model.Goal;
-import edu.calpoly.react.model.SubGoal;
 
 /**
  * Created by Nishanth on 4/27/17.
@@ -83,9 +83,11 @@ public class DBSeed {
                             rand.nextInt(60)
                     );
                     Calendar end = new GregorianCalendar();
-                    end.setTimeInMillis(start.getTimeInMillis() + (long)rand.nextInt(86400000) + 300000L);
+                    end.setTimeInMillis(start.getTimeInMillis() +
+                            (long)rand.nextInt(86400000) + 300000L);
 
-                    addEvent(db, String.format("%s %d", a_name, i), action, start.getTime(), end.getTime());
+                    addEvent(db, String.format("%s %d", a_name, i),
+                            action, start.getTime(), end.getTime());
                 }
             }
         }
@@ -99,13 +101,13 @@ public class DBSeed {
         end.set(2018, 0, 1);
         try {
             db.addGoal(new Goal("2017", subGoals, start.getTime(), end.getTime()));
-        }
-        catch (TimeWindowException twe) {
+        } catch (TimeWindowException twe) {
             Log.e(DBSeed.class.getName(), "Could not seed goal.", twe);
         }
     }
 
-    private static void addEvent(DBConnection db, String name, Action action, Date start, Date end) {
+    private static void addEvent(DBConnection db, String name, Action action, Date start,
+                                 Date end) {
         try {
             Event event = new Event(name, action, start, end);
             db.addEvent(event);

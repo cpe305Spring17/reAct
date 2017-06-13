@@ -87,8 +87,7 @@ public class Goal extends TimeWindow {
     public void setNotifTitle(String title) {
         if (title == null) {
             notifBuilder.setContentTitle("");
-        }
-        else {
+        } else {
             notifBuilder.setContentTitle(title);
         }
     }
@@ -96,8 +95,7 @@ public class Goal extends TimeWindow {
     public void setNotifText(String text) {
         if (text == null) {
             notifBuilder.setContentText("");
-        }
-        else {
+        } else {
             notifBuilder.setContentText(text);
         }
     }
@@ -105,8 +103,9 @@ public class Goal extends TimeWindow {
     public Boolean checkComplete() {
         for (int i = 0; i < subGoals.size(); i++) {
             SubGoal sub = subGoals.get(i);
-            if (sub.isComplete())
+            if (sub.isComplete()) {
                 continue;
+            }
 
             if (notifBuilder != null && notifManager != null) {
                 //need to add notification i
@@ -135,8 +134,9 @@ public class Goal extends TimeWindow {
     public boolean isValid() {
         Set<Action> activities = new HashSet<>();
         for (SubGoal sg : this.subGoals) {
-            if (activities.contains(sg.getAction()))
+            if (activities.contains(sg.getAction())) {
                 return false;
+            }
             activities.add(sg.getAction());
         }
 

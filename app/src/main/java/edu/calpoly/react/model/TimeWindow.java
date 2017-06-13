@@ -48,8 +48,9 @@ public class TimeWindow {
     }
 
     public void setEndTime(Date endTime) throws TimeWindowException {
-        if (startTime != null && endTime != null && endTime.before(startTime))
+        if (startTime != null && endTime != null && endTime.before(startTime)) {
             throw new TimeWindowException("EndTime must be after StartTime");
+        }
 
         this.endTime = endTime;
     }
@@ -63,10 +64,12 @@ public class TimeWindow {
         Date end = null;
 
         for (TimeWindow tw : others) {
-            if (start == null || tw.getStartTime().before(start))
+            if (start == null || tw.getStartTime().before(start)) {
                 start = tw.getStartTime();
-            if (end == null || tw.getEndTime().after(end))
+            }
+            if (end == null || tw.getEndTime().after(end)) {
                 end = tw.getEndTime();
+            }
         }
 
         setStartTime(start);
@@ -85,8 +88,9 @@ public class TimeWindow {
 
     public Boolean encompassesAll(List<? extends TimeWindow> others) {
         for (TimeWindow tw : others) {
-            if (!encompasses(tw))
+            if (!encompasses(tw)) {
                 return false;
+            }
         }
         return true;
     }

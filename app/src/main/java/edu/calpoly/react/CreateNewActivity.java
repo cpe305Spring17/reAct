@@ -15,13 +15,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import edu.calpoly.react.model.Action;
+import edu.calpoly.react.model.Category;
+import edu.calpoly.react.model.database.DBConnection;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import edu.calpoly.react.model.Action;
-import edu.calpoly.react.model.Category;
-import edu.calpoly.react.model.database.DBConnection;
 
 /**
  * Created by Nishanth on 5/17/17.
@@ -90,7 +91,7 @@ public class CreateNewActivity extends AppCompatActivity {
     }
 
 
-    public void openCategoryDialog(View view){
+    public void openCategoryDialog(View view) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Create Category");
         // Set up the input
